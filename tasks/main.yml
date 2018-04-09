@@ -21,7 +21,6 @@
       - bind-utils
       - dkms
       - docker
-      - python-pip
     state: latest
 
 - name: install docker-compose
