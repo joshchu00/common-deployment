@@ -6,7 +6,7 @@
 
 - name: install the 'Development tools' package group
   yum:
-    name: "@Development tools"
+    name: '@Development tools'
     state: latest
 
 - name: install epel-release
@@ -26,8 +26,8 @@
 - name: setup /etc/docker/daemon.json
   lineinfile: 
     path: /etc/docker/daemon.json
-    regexp: "^\\{"
-    line: "{ \"insecure-registries\": {{ REGISTRIES }} }"
+    regexp: '^\{'
+    line: '{ "insecure-registries": {{ REGISTRIES }} }'
 
 - name: enable docker service and start it
   systemd: 
@@ -37,7 +37,6 @@
 
 - name: install docker-compose
   get_url:
-    url: "{{ DOCKER_COMPOSE_URL }}"
+    url: '{{ DOCKER_COMPOSE_URL }}'
     dest: /usr/local/bin/docker-compose
     mode: a+x
-
