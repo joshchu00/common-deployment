@@ -26,8 +26,8 @@
 - name: setup /etc/docker/daemon.json
   lineinfile: 
     path: /etc/docker/daemon.json
-    regexp: '\{\}'
-    line: '{ "insecure-registries": {{ REGISTRIES }} }'
+    regexp: "\\{\\}"
+    line: "{ \"insecure-registries\": {{ REGISTRIES }} }"
 
 - name: enable docker service and start it
   systemd: 
