@@ -1,0 +1,36 @@
+---
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: install the 'Development tools' package group
+  yum:
+    name: '@Development tools'
+    state: latest
+
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: latest
+
+- name: install required packages
+  yum:
+    name:
+      - vim
+      - bind-utils
+      - dkms
+      - docker
+    state: latest
+
+- name: enable docker service and start it
+  systemd: 
+    name: docker
+    enabled: yes
+    state: started
+
+- name: install docker-compose
+  get_url:
+    url: '{{ docker_compose_url }}'
+    dest: /usr/local/bin/docker-compose
+    mode: a+x
